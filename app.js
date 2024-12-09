@@ -1,67 +1,105 @@
-const resultElement = document.getElementById('result')
-const input1 = document.getElementById('input1')
-const input2 = document.getElementById('input2')
-const submitBtn = document.getElementById('submit')
+const inputElement = document.querySelector('#title')
+const createBtn = document.querySelector('#create')
+const listElement = document.querySelector('#list')
 
-const plusBtn = document.getElementById('plus')
-const minusBtn = document.getElementById('minus')
+// console.log(inputElement.value)
+/*
+ const notes = ['Изучить JS', 'Далее React', 'Далее Node.js']
 
-const multiplyBtn = document.getElementById('multiply')
-const divideBtn = document.getElementById('divide')
-
-let action = ''
-
-plusBtn.onclick = function () {
-	action = '+'
-}
-minusBtn.onclick = function () {
-	action = '-'
-}
-
-multiplyBtn.onclick = function () {
-	action = '*'
-}
-
-divideBtn.onclick = function () {
-	action = '/'
-}
-
-function printResult(result) {
-	if (result < 0) {
-		resultElement.style.color = 'red'
-	} else {
-		resultElement.style.color = 'green'
+function render() {
+	for (let i = 0; notes.length > i; i++) {
+		listElement.insertAdjacentHTML('beforeend', getNoteTemplate(notes[i]))
 	}
-	resultElement.textContent = result
 }
+render()
+*/
 
-function computeAction(inp1, inp2, actionSymbol) {
-	const sum1 = Number(inp1.value)
-	const sum2 = Number(inp2.value)
-	const sum3 = Number(inp1.value)
-	const sum4 = Number(inp2.value)
-	if (actionSymbol == '+') {
-		return sum1 + sum2
-	} else if (actionSymbol == '-') {
-		return sum1 - sum2
-	} else if (actionSymbol == '*') {
-		return sum3 * sum4
+/*
+function getNoteTemplate(title) {
+	return `
+	<li class="list-group-item d-flex justify-content-between align-items-center">
+		<span>${title}</span>
+			<span>
+				<span class="btn btn-small btn-success">&check;</span>
+				<span class="btn btn-small btn-danger">&times;</span>
+			</span>
+	</li>`
+}*/
+
+// createBtn.onclick = function () {
+// 	if (inputElement.value.length === 0) {
+// 		return
+// 	}
+// 	listElement.insertAdjacentHTML(
+// 		'beforeend',
+// 		getNoteTemplate(inputElement.value)
+// 	)
+// 	inputElement.value = ''
+// }
+
+const notes = [
+	{
+		title: 'Изучить JS',
+		isCompleted: false,
+	},
+	{
+		title: 'Далее React',
+		isCompleted: false,
+	},
+]
+
+function render() {
+	listElement.innerHTML = ''
+	if (notes.length === 0) {
+		listElement.innerHTML = '<li class="list-group-item">Список пуст</li>'
 	} else {
-		return sum3 / sum4
+		for (let i = 0; notes.length > i; i++) {
+			listElement.insertAdjacentHTML('beforeend', getNoteTemplate(notes[i], i))
+		}
 	}
-	// return actionSymbol = '+' ? sum1 + sum2 : actionSymbol = '-' ? sum1 - sum2 : actionSymbol = '*' ? sum3 * sum4 : sum3 / sum4
 }
 
-submitBtn.onclick = function () {
-	const result = computeAction(input1, input2, action)
-	printResult(result)
+render()
 
-	/*
-	if (action == '+') {
-		const sum = Number(input1.value) + Number(input2.value)	
-		printResult(sum)
-	} else if (action == '-') {
-		const sum = Number(input1.value) - Number(input2.value)
-		printResult(sum)
-	}*/
+listElement.onclick = function (event) {
+	if (event.target.dataset.index) {
+		const index = parseInt(event.target.dataset.index)
+		const type = event.target.dataset.type
+
+		if (type === 'toggle') {
+			notes[index].isCompleted = !notes[index].isCompleted
+		} else if (type === 'remove') {
+			notes.splice(index, 1)
+		}
+
+		render()
+	}
+}
+
+function getNoteTemplate(notes, index) {
+	return `
+	<li class="list-group-item d-flex justify-content-between align-items-center">
+		<span class='${notes.isCompleted ? 'text-decoration-line-through' : ''}' >${
+		notes.title
+	}</span> 
+			<span>
+				<span class="btn btn-small btn-${
+					notes.isCompleted ? 'warning' : 'success'
+				}" data-index="${index}" data-type="toggle" >&check;</span>
+				<span class="btn btn-small btn-danger" data-type="remove" data-index="${index}">&times;</span>
+			</span>
+	</li>`
+}
+
+createBtn.onclick = function () {
+	if (inputElement.value.length === 0) {
+		return
+	}
+	const newNote = {
+		title: inputElement.value,
+		isCompleted: false,
+	}
+	notes.push(newNote)
+	render()
+	inputElement.value = ''
 }
