@@ -1,22 +1,15 @@
 // const now = new Date()
+let mode = 'full'
 
-let mode = 'time'
 const outputTitle = document.getElementById('output')
 const FullBtn = document.getElementById('full')
 const DateBtn = document.getElementById('date')
 const TimeBtn = document.getElementById('time')
 
-outputTitle.textContent = new Date()
-
-setInterval(() => {
-	outputTitle.textContent = formate(mode)
-}, 1000)
-//5.06.44
-
-const formate = formateMode => {
+const format = formatMode => {
 	const now = new Date()
 
-	switch (formateMode) {
+	switch (formatMode) {
 		case 'time':
 			return now.toLocaleTimeString()
 		case 'date':
@@ -27,3 +20,16 @@ const formate = formateMode => {
 			return now.toLocaleDateString()
 	}
 }
+
+function update() {
+	return (outputTitle.textContent = format(mode))
+}
+
+update()
+setInterval(() => update(), 1000)
+
+FullBtn.onclick = () => (mode = 'full')
+DateBtn.onclick = () => (mode = 'date')
+TimeBtn.onclick = () => (mode = 'time')
+
+//5.08.56
