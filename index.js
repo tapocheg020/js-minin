@@ -11,7 +11,7 @@ const format = formatMode => {
 
 	switch (formatMode) {
 		case 'time':
-			return now.toLocaleTimeString()
+			return now.toLocaleTimeString() + '.' + now.getMilliseconds()
 		case 'date':
 			return now.toLocaleDateString()
 		case 'full':
@@ -28,8 +28,15 @@ function update() {
 update()
 setInterval(() => update(), 1000)
 
-FullBtn.onclick = () => (mode = 'full')
-DateBtn.onclick = () => (mode = 'date')
-TimeBtn.onclick = () => (mode = 'time')
+const bindMode = modeReturn => {
+	return () => {
+		mode = modeReturn
+		return update()
+	}
+}
+
+FullBtn.onclick = bindMode('full')
+DateBtn.onclick = bindMode('date')
+TimeBtn.onclick = bindMode('time')
 
 //5.08.56
