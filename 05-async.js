@@ -30,6 +30,22 @@ const delay = (time = 1000) => {
 // 	.catch(err => console.log(err))
 // 	.finally(() => console.log('Server is fiend'))
 
-
 //6:24:30
 
+const getData = () => new Promise(resolve => resolve([1, 2, 3]))
+
+// getData().then(array => console.log(array))
+
+const asyncExample = async () => {
+	try {
+		await delay(3000)
+		const data = await getData()
+		console.log(data)
+	} catch (error) {
+		console.log(error)
+	} finally {
+		console.log('Server is fiend')
+	}
+}
+
+asyncExample()
