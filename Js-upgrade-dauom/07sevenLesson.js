@@ -4,7 +4,7 @@ num = Number(num)
 num = new Number(num)
 number = num.valueOf()
 
-// console.log(number)
+console.log(number)
 
 //<------Методы -------->
 

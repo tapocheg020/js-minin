@@ -25,12 +25,14 @@ number = (number - 1 + 11) % 5 // будет остаток ОТ ДЕЛЕНИЯ 
 let first = 10
 //Постфиксный инкремент
 let second = first++ //тут мы присвоили значание 10 second, и увеличили переменную first на 1 в переменной second (ебать гемор)
+console.log(second, first)//(10,11)
 
 //Постфиксный декремент
 // let second = first--
 
 //Префиксный инкремент
 let third = ++first // тут мы увеличили оба значения и присвоили им одинаково +1
+console.log(third, first)//12
 
 //Префиксный декремент
 // let third = --first
@@ -64,5 +66,3 @@ const greeting = 'Hello, ' + 'Pidorasina' + '!'
 const name = 'TVOY(dadada tvoy)'
 // console.log(greeting + ` YA ${name} ROT EBAL`)
 // console.log(1 + '1') //11 конкатенация по джабоскриптовскому синтаксису
-
-

@@ -1,14 +1,14 @@
 //<-----		Логические операторы		-----> // if else
-// let a = 13
+let a = 13
 
-// if (a % 5 == 2) {
-// 	console.log('a is odd')
-// } else if (a % 5 == 0) {
-// 	console.log('Takogo ne budet')
-// } else {
-// 	a = a * 10
-// 	console.log(`idi ti nahui, da ${a}`)
-// }
+if (a % 5 == 2) {
+	console.log('a is odd')
+} else if (a % 5 == 0) {
+	console.log('Takogo ne budet')
+} else {
+	a = a * 10
+	console.log(`idi ti nahui, da ${a}`)
+}
 
 //<---------Тернарные операторы---------->
 let num = 25
@@ -54,9 +54,9 @@ b = 0 && 3
 // console.log(b)
 
 isLoading = true
-// {
-// 	isLoading && console.log('Loading...')
-// }
+{
+	isLoading && console.log('Loading...')
+}
 
 const proverochka = 10 && 20 && 2 && 'sasal?' // идет проверка на выискивание ложного значения, если есть его выведет, если нет то ласт значение
 
