@@ -1,3 +1,5 @@
+const styles = 'background: lightsalmon'
+
 const log = console.log
 
 const carsBrend = ['Audi', 'BMW', 'Mersedes', 'Skoda']
@@ -60,7 +62,46 @@ const names2 = ['Katya', 'Masha']
 const [nameOne, nameTwo] = names
 const [nameKatya, nameMasha, nameSveta = 'Sveta'] = names2
 
-log(nameOne, nameTwo)
-log(nameKatya, nameMasha, nameSveta)
+// log(nameOne, nameTwo)
+// log(nameKatya, nameMasha, nameSveta)
 
 //5:11:00 пусть 00 но по факту 45 сек
+
+///------------->-spread-<---------------------
+const allNames = [...names, 'Nastya', ...names2] //конкатенация массивов по удобному способоу spread
+// log(allNames)
+
+const hello = 'Hello'
+// log([...hello])
+
+const sumNum = [32, 33, 44, 1, 23, 911, 231]
+// log(Math.max(...sumNum))
+
+//-------->rest<-----//Остаточные параметры всегда должны быть в конце(аргументов именно)
+const restOper = (...numbers) => {
+	let sum = 0
+
+	for (const value of numbers) {
+		if (value % 2 == 0) {
+			sum += value
+		}
+	}
+
+	return sum
+}
+
+// log(restOper(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+
+const [firstName, ...restName] = names
+
+// log(firstName, restName)
+
+const getTitleAndDescription = (title, ...description) => {
+	log(`%c${title}`, styles)
+
+	for (const value of description) {
+		log(`- ${value} - ✔🎁`)
+	}
+}
+
+getTitleAndDescription('JavaScript нах бля нах', 'Жеский язык программирования бля нах', 'на нем можно епта да все нах бля', 'если не додик подпишись на тэгэ анал нах бля')
