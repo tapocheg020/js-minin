@@ -41,7 +41,7 @@ numbers.pop() // если обозначить метод в переменну�
 // log(numbers)
 
 /*
-//// <-----------------Циклы for while for each------------------>
+//// <-----------------Циклы for while ------------------>
 */
 
 const arrCars = ['BMW', 'AUDI', 'TOYOTA', 'MERCEDES', 'HONDA']
@@ -185,4 +185,3 @@ for (let j = 0; j < arrayNum.length; j++) {
 for (car of carsBrend) {
 	// log(`Car name -> ${car.brend}, ${car.model}, ${car.color} `)
 }
-
