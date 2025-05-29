@@ -56,19 +56,85 @@ const eventNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12].filter(
 // log(eventNumbers)
 
 const clients = [
-	{ id: 1, level: 3, name: 'Pasha', status: 'offline' },
-	{ id: 2, level: 1, name: 'Pasha', status: 'offline' },
-	{ id: 3, level: 5, name: 'Pasha', status: 'offline' },
-	{ id: 4, level: 8, name: 'Pasha', status: 'online' },
-	{ id: 5, level: 2, name: 'Pasha', status: 'offline' },
+	{ id: 1, level: 3, name: 'Ilya', status: 'offline' },
+	{ id: 2, level: 1, name: 'Sveta', status: 'offline' },
+	{ id: 3, level: 5, name: 'Katya', status: 'offline' },
+	{ id: 4, level: 8, name: 'Nastya', status: 'online' },
+	{ id: 5, level: 2, name: 'Sergey', status: 'offline' },
 	{ id: 6, level: 6, name: 'Pasha', status: 'online' },
-	{ id: 7, level: 5, name: 'Pasha', status: 'online' },
+	{ id: 7, level: 5, name: 'Zhenya', status: 'online' },
 ]
 
 const onlineClients = clients.filter(
 	client => client.status === 'online' && client.level > 5
 )
 
-log(onlineClients)
+// for (let i = 0; i < onlineClients.length; i++) {
+// 	console.group('Client number ' + (i + 1))
+// 	console.log(`id - ${onlineClients[i].id}`)
+// 	console.log(onlineClients[i].name)
+// 	console.log(onlineClients[i].level)
+// 	console.log(onlineClients[i].status)
 
-// 5:34:44
+// 	console.groupEnd()
+// } //типа старый материал вспоминаю
+
+// log(onlineClients)
+
+// 5:37:44
+
+// <----------------------Метод Slice----------------->
+
+const newUsers = users.slice(0, 3)
+// log(newUsers)
+
+// delete users[admUserIndex]
+// log(users)//удаляет но остается пусто вместо элемента в массиве
+
+/*
+--------Splice-------
+*/
+
+// log(users.splice(admUserIndex, 1))
+// log(users)//удаляет элемент, сохраняет его и делает массив чистым
+
+// log(users.splice(2, 0, { id: 3, name: 'Ilya' }))
+// log(users)// вставляет элементы в массив под определенным индексом
+
+const users2025 = users.toSpliced(3, 1, { id: 4, name: 'Sveta' }) //не меняет старый массив
+// log(users2025) // вставляет элементы в массив под определенным индексом
+// log(users)
+
+const str = 'Anastasia'
+log(str.split('').reverse().join(''))
+
+/*
+<----------Map-------->
+Часто используемый метод для обработки массивов
+
+map вызывает функцию каждого элемента массива и возвращает массив результатов выполнения этой функции
+*/
+
+const clientsName = clients.map(client => client.name) //пиши return если не в одну строку
+// log(clientsName)
+
+const clientsNameAndStatus = clients
+	.map(client => {
+		return {
+			name: client.name,
+			status: client.status,
+			isVzrosliy: true,
+		}
+	})
+	.map(client => {
+		if (client.status === 'online') {
+			client.status = 'online 😎😎'
+		} else {
+			client.status = 'offline 😴😴'
+		}
+		return client
+	})
+	.filter(onlik => onlik.status.startsWith('online'))
+log(clientsNameAndStatus)
+
+//5:48
