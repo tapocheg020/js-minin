@@ -44,12 +44,11 @@ const sommeHasNames = users.some(user => 'id' in user)
 
 const admUser = users.find(user => user.id === 3)
 const admUserIndex = users.findIndex(user => user.id === 3)
-
 // log(admUser, admUserIndex)
 
 const filteredSkills = skills.filter(skill => skill.includes('c'))
 //Метод filter - отбирает только true элементы и показывает их в массиве
-//log(filteredSkills)
+// log(filteredSkills)
 const eventNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12].filter(
 	num => num % 2 == 0
 )
@@ -85,7 +84,7 @@ const onlineClients = clients.filter(
 
 // <----------------------Метод Slice----------------->
 
-const newUsers = users.slice(0, 3)
+const newUsers = users.slice(0, 4)
 // log(newUsers)
 
 // delete users[admUserIndex]
@@ -106,7 +105,7 @@ const users2025 = users.toSpliced(3, 1, { id: 4, name: 'Sveta' }) //не мен�
 // log(users)
 
 const str = 'Anastasia'
-log(str.split('').reverse().join(''))
+// log(str.split('').reverse().join(''))
 
 /*
 <----------Map-------->
@@ -135,6 +134,73 @@ const clientsNameAndStatus = clients
 		return client
 	})
 	.filter(onlik => onlik.status.startsWith('online'))
-log(clientsNameAndStatus)
+// log(clientsNameAndStatus)
 
 //5:48
+
+//    Метод reduce
+/*
+		reduce используется для вычисления единого значения на основе массива
+		arr.reduce((accumulator, item, index, array) => {
+			//....
+		},[initial])
+
+//Accumulator - результат предыдущего вызова этой функции, равен initial при первом вызове (если передан initial)
+//Item - текущий элемент массива
+//Index - индекс текущего элемента
+//Array - массив
+*/
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// log(numbers.reduce((acc, cur) => acc + cur, 0))
+
+const carsBrand = [
+	{
+		id: 1,
+		brand: 'BMW',
+		model: '3 series',
+		color: 'black',
+		price: 1_500_000,
+	},
+	{
+		id: 2,
+		brand: 'Audi',
+		model: 'A4',
+		color: 'brown',
+		price: 1_200_000,
+	},
+	{
+		id: 3,
+		brand: 'Mersedes',
+		model: 'C class',
+		color: 'silver',
+		price: 1_700_000,
+	},
+	{
+		id: 4,
+		brand: 'Skoda',
+		model: 'Octavia',
+		color: 'White',
+		price: 1_200_000,
+	},
+]
+
+const totalPriceCars = carsBrand.reduce((acc, cur) => acc + cur.price, 0)
+log(totalPriceCars)
+
+let brandCount = 0
+const brandMaps = carsBrand.reduce((acc, cur) => {
+	if (cur.brand in acc) {
+		acc[cur.brand]++
+	} else {
+		acc[cur.brand] = 1
+		brandCount++
+	}//сначала идет в else  и создает acc, потом идет в if
+	return acc
+}, {})
+
+// log(brandMaps)
+// log(brandCount)
+
+// 5:58:08
