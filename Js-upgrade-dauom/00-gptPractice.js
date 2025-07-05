@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // const users = [
 // 	{ name: 'Alice', age: 22 },
 // 	{ name: 'Bob', age: 17 },
@@ -105,3 +106,6 @@ const sumAllNumber = [1, 2, 3, 4]
 const sum = sumAllNumber.reduce((acc, cur) => acc + cur, 0)
 
 console.log(sum)
+=======
+
+>>>>>>> 53767d25035981e752a033852f009c1df63638b8
