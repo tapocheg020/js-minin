@@ -65,7 +65,7 @@ const clients = [
 ]
 
 const onlineClients = clients.filter(
-	client => client.status === 'online' && client.level > 5
+	client => client.status === 'online' && client.level >= 5
 )
 
 // for (let i = 0; i < onlineClients.length; i++) {
@@ -100,7 +100,7 @@ const newUsers = users.slice(0, 4)
 // log(users.splice(2, 0, { id: 3, name: 'Ilya' }))
 // log(users)// вставляет элементы в массив под определенным индексом
 
-const users2025 = users.toSpliced(3, 1, { id: 4, name: 'Sveta' }) //не меняет старый массив
+const users2025 = users.toSpliced(3, 1, { id: 4, name: 'Sveta' }) //не меняет старый массив   ES2023
 // log(users2025) // вставляет элементы в массив под определенным индексом
 // log(users)
 
@@ -187,7 +187,7 @@ const carsBrand = [
 ]
 
 const totalPriceCars = carsBrand.reduce((acc, cur) => acc + cur.price, 0)
-log(totalPriceCars)
+// log(totalPriceCars)
 
 let brandCount = 0
 const brandMaps = carsBrand.reduce((acc, cur) => {

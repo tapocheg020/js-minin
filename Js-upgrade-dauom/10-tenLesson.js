@@ -17,7 +17,7 @@ switch (num1) {
 }
 
 // ------------
-// const num2 = 33
+const num2 = 33
 // const casual = prompt('Введи число хуйлан бля нах ')
 
 // if (num2 == 33) {
